@@ -17,7 +17,7 @@
             background: #0a0a14;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Cormorant:ital,wght@0,400;0,700;1,400&family=Cormorant+Infant&family=Cormorant+Upright:wght@400;500&family=Gotu&family=Manrope:wght@400;500;600;700;800&family=Yaldevi&display=swap');
+               @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Cormorant:ital,wght@0,400;0,700;1,400&family=Cormorant+Infant&family=Cormorant+Upright:wght@400;500&family=Gotu&family=Manrope:wght@400;500;600;700;800&family=Yaldevi&display=swap');
 
         html {
             scroll-behavior: smooth;
@@ -344,13 +344,13 @@
 
         /* Animated Lanterns */
         .lanterns-container {
-            position: absolute;
+            /* position: fixed; */
             width: 100%;
             height: 100%;
-            top: 0;
-            left: 0;
+            /* top: 0;
+            left: 0; */
             pointer-events: none;
-            z-index: 1;
+            z-index: 9999;
         }
 
         .lantern {
@@ -545,7 +545,52 @@
             to { opacity: 1; }
         }
 
-        /* Spiral Image Section - UPDATED for full width and height */
+        /* Full Width Image Section */
+        /* .fullscreen-image-section {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            z-index: 1;
+        } */
+
+        /* .fullscreen-image-container {
+            position: relative;
+            width: 100%;
+            height: auto;
+            min-height: 300px;
+            background: #0a0a14;
+        } */
+
+        .fullscreen-hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .responsive-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .transition-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to bottom, 
+                #0a0a14 0%,
+                rgba(10, 10, 20, 0.7) 40%,
+                transparent 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Spiral Image Section */
         .spiral-image-section {
             width: 100%;
             padding: 50px 0 100px;
@@ -565,7 +610,7 @@
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 215, 0, 0.3), 0 0 0 5px rgba(255, 215, 0, 0.1);
             animation: frameGlow 3s ease-in-out infinite;
-            aspect-ratio: 3/4; /* Maintains 3:4 ratio like the original image */
+            aspect-ratio: 3/4;
         }
 
         .spiral-frame::before {
@@ -596,7 +641,7 @@
             width: 100%;
             height: 100%;
             display: block;
-            object-fit: cover; /* Makes image cover entire frame */
+            object-fit: cover;
             object-position: center;
             transition: transform 0.5s ease;
         }
@@ -605,7 +650,6 @@
             transform: scale(1.02);
         }
 
-        /* Fallback spiral design in case image doesn't load */
         .spiral-fallback {
             width: 100%;
             height: 100%;
@@ -713,7 +757,7 @@
             50% { transform: translateY(-50%) scale(1.5); opacity: 0.4; }
         }
 
-        /* Rest of the sections remain the same */
+        /* Invite Section */
         .invite-section {
             width: 100%;
             padding: 100px 0;
@@ -1372,38 +1416,97 @@
             color: #e79300;
         }
 
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .groom-name, .bride-name {
-                font-size: 80px;
-            }
-            
-            .couple-names h2, .couple-names h3 {
-                font-size: 100px;
-            }
-            
-            .couple-names .ampersand {
-                font-size: 100px;
-            }
-
-            .spiral-frame {
-                width: 600px;
-            }
-        }
-
+        /* ===== MOBILE OPTIMIZED LANTERNS ===== */
         @media (max-width: 768px) {
-            .buy-button-container {
-                top: 16px;
-                left: 50%;
-                transform: translateX(-50%);
-                right: auto;
+            .lanterns-container {
+                z-index: 9999;
+            }
+
+            .lantern {
+                width: 35px !important;
+                height: 50px !important;
+                animation-duration: 6s;
+            }
+
+            .lantern-1 { 
+                top: 8%; 
+                left: 5%; 
+                width: 30px !important; 
+                height: 45px !important;
             }
             
-            .music-player-container {
-                top: 80px;
-                right: 20px;
+            .lantern-2 { 
+                top: 15%; 
+                right: 8%; 
+                width: 28px !important; 
+                height: 42px !important;
+                animation-delay: -1s;
             }
             
+            .lantern-3 { 
+                top: 40%; 
+                left: 3%; 
+                width: 45px !important; 
+                height: 60px !important;
+                animation-delay: -2s;
+            }
+            
+            .lantern-4 { 
+                top: 65%; 
+                right: 5%; 
+                width: 32px !important; 
+                height: 48px !important;
+                animation-delay: -0.5s;
+            }
+            
+            .lantern-5 { 
+                top: 75%; 
+                left: 8%; 
+                width: 25px !important; 
+                height: 38px !important;
+                animation-delay: -1.5s;
+            }
+            
+            .lantern-6 { 
+                top: 30%; 
+                right: 3%; 
+                width: 35px !important; 
+                height: 52px !important;
+                animation-delay: -2.5s;
+            }
+
+            .lantern-top {
+                top: -6px;
+                left: 10px;
+                width: 12px;
+                height: 8px;
+            }
+
+            .lantern-bottom {
+                bottom: -5px;
+                left: 8px;
+                width: 18px;
+                height: 8px;
+            }
+
+            .lantern-glow {
+                bottom: 6px;
+                width: 12px;
+                height: 12px;
+            }
+
+            .lantern-tassel {
+                bottom: -8px;
+                height: 8px;
+            }
+
+            .lantern-tassel::after {
+                bottom: -2px;
+                left: -3px;
+                width: 6px;
+                height: 6px;
+            }
+
             .groom-name, .bride-name {
                 font-size: 51px;
                 line-height: 60px;
@@ -1468,7 +1571,43 @@
                 width: 250px;
                 height: 350px;
             }
+
+            .buy-button-container {
+                top: 16px;
+                left: 50%;
+                transform: translateX(-50%);
+                right: auto;
+            }
             
+            .music-player-container {
+                top: 80px;
+                right: 20px;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .lantern-1 { width: 25px !important; height: 38px !important; }
+            .lantern-2 { width: 22px !important; height: 35px !important; }
+            .lantern-3 { width: 35px !important; height: 48px !important; }
+            .lantern-4 { width: 28px !important; height: 42px !important; }
+            .lantern-5 { width: 20px !important; height: 32px !important; }
+            .lantern-6 { width: 30px !important; height: 45px !important; display: none; }
+        }
+
+        /* Tablet devices */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .lantern {
+                width: 45px !important;
+                height: 65px !important;
+            }
+            
+            .lantern-1 { width: 40px !important; height: 60px !important; }
+            .lantern-2 { width: 38px !important; height: 55px !important; }
+            .lantern-3 { width: 55px !important; height: 75px !important; }
+            .lantern-4 { width: 42px !important; height: 62px !important; }
+            .lantern-5 { width: 35px !important; height: 52px !important; }
+            .lantern-6 { width: 45px !important; height: 65px !important;  }
         }
     </style>
 </head>
@@ -1490,95 +1629,93 @@
         <div class="flower flower-6"></div>
     </div>
 
-    <!-- Animated Lanterns -->
-    <div class="lanterns-container" style="z-index: 9999; ">
-        <div class="lantern lantern-1">
-            <div class="lantern-top"></div>
-            <div class="lantern-body">
-                <div class="lantern-glow"></div>
-            </div>
-            <div class="lantern-bottom"></div>
-            <div class="lantern-tassel"></div>
+ <!-- Animated Lanterns - Highest z-index to float above everything -->
+<div class="lanterns-container" style="z-index: 9999; position: absolute; top: 0; left: 0; width: 100%; height: 100%; ">
+    <div class="lantern lantern-1">
+        <div class="lantern-top"></div>
+        <div class="lantern-body">
+            <div class="lantern-glow"></div>
         </div>
-        <div class="lantern lantern-2">
-            <div class="lantern-top"></div>
-            <div class="lantern-body">
-                <div class="lantern-glow"></div>
-            </div>
-            <div class="lantern-bottom"></div>
-            <div class="lantern-tassel"></div>
-        </div>
-        <div class="lantern lantern-3">
-            <div class="lantern-top"></div>
-            <div class="lantern-body">
-                <div class="lantern-glow"></div>
-            </div>
-            <div class="lantern-bottom"></div>
-            <div class="lantern-tassel"></div>
-        </div>
-        <div class="lantern lantern-4">
-            <div class="lantern-top"></div>
-            <div class="lantern-body">
-                <div class="lantern-glow"></div>
-            </div>
-            <div class="lantern-bottom"></div>
-            <div class="lantern-tassel"></div>
-        </div>
-        <div class="lantern lantern-5">
-            <div class="lantern-top"></div>
-            <div class="lantern-body">
-                <div class="lantern-glow"></div>
-            </div>
-            <div class="lantern-bottom"></div>
-            <div class="lantern-tassel"></div>
-        </div>
-        <div class="lantern lantern-6">
-            <div class="lantern-top"></div>
-            <div class="lantern-body">
-                <div class="lantern-glow"></div>
-            </div>
-            <div class="lantern-bottom"></div>
-            <div class="lantern-tassel"></div>
-        </div>
+        <div class="lantern-bottom"></div>
+        <div class="lantern-tassel"></div>
     </div>
-
-    <div class="framer-TCaaR">
-   
- 
-        <!-- Main Container -->
-        <div class="main-container">
-            <!-- Section 1 Background -->
-            <div class="section-bg section-1-bg">
-                <div class="floating-orb orb-1"></div>
-                <div class="floating-orb orb-2"></div>
-                <div class="temple-silhouette"></div>
-            </div>
-
-            <!-- Names Section -->
-            <section class="names-section">
-                <div class="names-container">
-                    <h1 class="groom-name">Sarath kumar</h1>
-                    <div class="wedding-text">WEDS</div>
-                    <h1 class="bride-name">Nivetha</h1>
-                </div>
-            </section>
-
-            <!-- UPDATED: Spiral Image Section - Full Width & Height -->
-            <!-- ===== FULL WIDTH RESPONSIVE IMAGE SECTION ===== -->
-<section class="fullscreen-image-section">
-    <div class="fullscreen-image-container">
-        <img src="marraige.png"
-             alt="Vishu and Kavya - Wedding Couple"
-             class="fullscreen-hero-image responsive-image"
-             style="width: 100vw; z-index: -100;"
-             loading="eager"
-             onerror="this.src='https://placehold.co/1920x1080/1a1a2e/ffd700/png?text=Please+Add+Your+Couple+Image'">
-        
-        <!-- Gradient overlay for smooth transition -->
-        <div class="transition-overlay"></div>
+    <div class="lantern lantern-2" >
+        <div class="lantern-top"></div>
+        <div class="lantern-body">
+            <div class="lantern-glow"></div>
+        </div>
+        <div class="lantern-bottom"></div>
+        <div class="lantern-tassel"></div>
     </div>
-</section>
+    <div class="lantern lantern-3" >
+        <div class="lantern-top"></div>
+        <div class="lantern-body">
+            <div class="lantern-glow"></div>
+        </div>
+        <div class="lantern-bottom"></div>
+        <div class="lantern-tassel"></div>
+    </div>
+    <div class="lantern lantern-4">
+        <div class="lantern-top"></div>
+        <div class="lantern-body">
+            <div class="lantern-glow"></div>
+        </div>
+        <div class="lantern-bottom"></div>
+        <div class="lantern-tassel"></div>
+    </div>
+    <div class="lantern lantern-5">
+        <div class="lantern-top"></div>
+        <div class="lantern-body">
+            <div class="lantern-glow"></div>
+        </div>
+        <div class="lantern-bottom"></div>
+        <div class="lantern-tassel"></div>
+    </div>
+    <div class="lantern lantern-6">
+        <div class="lantern-top"></div>
+        <div class="lantern-body">
+            <div class="lantern-glow"></div>
+        </div>
+        <div class="lantern-bottom"></div>
+        <div class="lantern-tassel"></div>
+    </div>
+</div>
+
+<div class="framer-TCaaR" style="position: relative; z-index: 1;">
+    <!-- Main Container -->
+    <div class="main-container" style="position: relative; z-index: 2;">
+        <!-- Section 1 Background -->
+        <div class="section-bg section-1-bg" style="z-index: 0;">
+            <div class="floating-orb orb-1"></div>
+            <div class="floating-orb orb-2"></div>
+            <div class="temple-silhouette"></div>
+        </div>
+
+             <!-- Names Section - HIGHEST (above lanterns) -->
+        <section class="names-section" style="position: relative; z-index: 120000;">
+            <div class="names-container">
+                <h1 class="groom-name">Sarath kumar</h1>
+                <div class="wedding-text">WEDS</div>
+                <h1 class="bride-name">Nivetha</h1>
+            </div>
         </section>
+
+    </div>
+
+    <!-- FULL WIDTH RESPONSIVE IMAGE SECTION - Below lanterns but above background -->
+    <section class="fullscreen-image-section" style="width: 100vw;  z-index: 3;">
+        <div class="fullscreen-image-container" style=" width: 100%;">
+            <img src="marraige.png"
+                 alt="Sarath and Nivetha - Wedding Couple"
+                 class="fullscreen-hero-image responsive-image"
+                 style="width: 100%; height: auto; display: block; position: relative; z-index: 1;"
+                 loading="eager"
+                 onerror="this.src='https://placehold.co/1920x1080/1a1a2e/ffd700/png?text=Please+Add+Your+Couple+Image'">
+            
+            <!-- Gradient overlay for smooth transition - Above image but below lanterns -->
+            <div class="transition-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 150px; background: linear-gradient(to bottom, #0a0a14 0%, rgba(10,10,20,0.7) 40%, transparent 100%); pointer-events: none; z-index: 2;"></div>
+        </div>
+    </section>
 
             <!-- Invite Section -->
             <section class="invite-section" id="invite">
