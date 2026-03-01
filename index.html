@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation - Vishu Weds Kavya</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Cormorant:ital,wght@0,400;0,700;1,400&family=Cormorant+Infant&family=Cormorant+Upright:wght@400;500&family=Gotu&family=Manrope:wght@400;500;600;700;800&family=Yaldevi&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -16,8 +18,6 @@
             overflow-x: hidden;
             background: #0a0a14;
         }
-
-               @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Cormorant:ital,wght@0,400;0,700;1,400&family=Cormorant+Infant&family=Cormorant+Upright:wght@400;500&family=Gotu&family=Manrope:wght@400;500;600;700;800&family=Yaldevi&display=swap');
 
         html {
             scroll-behavior: smooth;
@@ -260,6 +260,30 @@
             50% { transform: translate(-20px, 20px) scale(0.9); }
             75% { transform: translate(20px, 20px) scale(1.05); }
         }
+
+        .cta-location {
+    padding: 20px 10px !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: transparent !important;
+}
+
+.cta-content {
+    max-width: 800px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+}
+
+.cta-content iframe {
+    width: 100% !important;
+    height: 350px !important;
+    border-radius: 15px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    max-width: 600px !important;
+}
 
         /* Buy Button */
         .buy-button-container {
@@ -766,10 +790,14 @@
             align-items: center;
             position: relative;
             z-index: 5;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            border-radius: 50px;
-            margin: 50px 0;
+            /* background: rgba(0, 0, 0, 0.3); */
+            /* background-image: url("sub_hero.jpg");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat; */
+            /* backdrop-filter: blur(10px); */
+            /* border-radius: 50px; */
+            /* margin: 50px 0; */
         }
 
         .om-symbol {
@@ -1535,6 +1563,19 @@
             .couple-names h2, .couple-names h3 {
                 font-size: 70px;
             }
+
+            .cta-content iframe {
+                height: 300px !important;
+                border-radius: 12px !important;
+            }
+            
+            .cta-title {
+                font-size: 28px !important;
+            }
+            
+            .cta-subtitle {
+                font-size: 16px !important;
+            }
             
             .couple-names .ampersand {
                 font-size: 70px;
@@ -1594,17 +1635,88 @@
             .lantern-5 { width: 20px !important; height: 32px !important; }
             .lantern-6 { width: 30px !important; height: 45px !important; display: none; }
               .fullscreen-image-section {
-            height: 50vh !important;
+            height: 80vh !important;
         }
         
         .fullscreen-image-container {
-            height: 50vh !important;
+            height: 80vh !important;
         }
         
         .fullscreen-hero-image {
-            height: 50vh !important;
+            height: 80vh !important;
             object-fit: cover !important;
         }
+
+        .cta-content iframe {
+            height: 250px !important;
+            border-radius: 10px !important;
+        }
+
+        .events-section{
+            padding: 0;
+            margin-top: -5vh;
+        }
+
+         /* Invite title for mobile */
+    .invite-title {
+        font-family: 'Cormorant Infant', serif;
+        font-size: 45px !important;
+        line-height: 1.1 !important;
+        color: #f3ecba;
+        text-align: center;
+        margin: 15px 0 !important;
+        padding: 0 15px !important;
+        text-shadow: 0 0 20px rgba(243, 236, 186, 0.5);
+        animation: glow 2s ease-in-out infinite;
+        width: 100% !important;
+        word-break: break-word !important;
+    }
+
+           /* Couple names alignment for mobile */
+    .couple-names {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        padding: 0 15px !important;
+    }
+    
+    .couple-names h2 {
+        font-family: 'Cormorant Upright', serif;
+        font-size: 45px !important;
+        line-height: 1.1 !important;
+        color: #f3ecba;
+        text-shadow: 0 0 20px rgba(243, 236, 186, 0.5);
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+    
+    .couple-names .ampersand {
+        font-family: 'Cormorant', serif;
+        font-size: 40px !important;
+        line-height: 1 !important;
+        color: #f3ecba;
+        margin: 5px 0 !important;
+        text-shadow: 0 0 20px rgba(243, 236, 186, 0.5);
+    }
+    
+    .couple-names h3 {
+        font-family: 'Cormorant Upright', serif;
+        font-size: 45px !important;
+        line-height: 1.1 !important;
+        color: #f3ecba;
+        text-shadow: 0 0 20px rgba(243, 236, 186, 0.5);
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
         }
 
         /* Tablet devices */
@@ -1717,7 +1829,7 @@
     <!-- FULL WIDTH RESPONSIVE IMAGE SECTION - Below lanterns but above background -->
     <section class="fullscreen-image-section" style="width: 100vw; height: 100%;  z-index: 3;">
         <div class="fullscreen-image-container" style=" width: 100%;  height: 100%;">
-            <img src="marraige.png"
+            <img src="hero_section.png"
                  alt="Sarath and Nivetha - Wedding Couple"
                  class="fullscreen-hero-image responsive-image"
                  style="width: 100%; height: auto; display: block; position: relative; z-index: 1;"
@@ -1729,40 +1841,47 @@
         </div>
     </section>
 
-            <!-- Invite Section -->
-            <section class="invite-section" id="invite">
-                <!-- Om Symbol -->
+<!-- <section style="width: 100vw; height: 25vh; background: linear-gradient(135deg, #ffd700, #ffa500); margin: 0; padding: 0; display: flex; align-items: center; justify-content: center; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; overflow: hidden;">
+    <div style="text-align: center;">
+        <span style="font-family: 'Cormorant', serif; color: white; font-size: 20px; display: block;">WE'RE DELIGHTED TO WELCOME</span>
+        <span style="font-family: 'Cormorant', serif; color: #800020; font-size: 32px; font-weight: bold; display: block;">OUR DEAR GUESTS</span>
+    </div>
+</section> -->
+
+    <!-- <section style="width: 100vw; height: 30vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #ffd700, #ffa500);">
+      
                 <div class="om-symbol">ॐ</div>
+    </section> -->
+
+            <!-- Invite Section -->
+            <section class="invite-section" id="invite"     >
+               
                 
                 <!-- Ganesha Image -->
-                <div class="ganesha-image">🐘</div>
+                <!-- <div class="ganesha-image">🐘</div> -->
                 
                 <div class="blessings-text">
-                    <p>With the heavenly blessings of</p>
-                    <p>Smt. Parvathi Ammal & Shri Krishnan Iyer</p>
+                    <p>Wedding Reception</p>
+                    <p>With great pleasure and joy,</p>
                     <div class="separator">✦ ✦ ✦</div>
-                    <p>Smt. Kamakshi Ammal & Shri Srinivasan Iyer</p>
+                    <p style="padding-inline: 10px;">we invite you to join us for the</p>
                 </div>
                 
-                <div class="invite-title">INVITE</div>
+                <div class="invite-title">Reception of</div>
                 
                 <div class="invite-subtitle">You to join us in the wedding celebrations of</div>
                 
                 <div class="couple-names">
-                    <h2>Vishu</h2>
+                    <h2>Sarath Kumar N</h2>
                     <div class="ampersand">&</div>
-                    <h3>Kavya</h3>
+                    <h3>Nivetha S</h3>
                 </div>
-                
-                <div class="parents-text">Daughter of</div>
-                <div class="parents-text">Smt. Parvathi & Shri K. Ramaswamy</div>
-                <div class="parents-text">On the following events</div>
             </section>
 
             <!-- Events Section -->
             <section class="events-section">
                 <!-- Card 1 - Mehendi -->
-                <div class="event-card card-1">
+                <!-- <div class="event-card card-1">
                     <div class="card-border">
                         <div class="card-pattern"></div>
                         <div class="flower-top"></div>
@@ -1779,10 +1898,10 @@
                             <a href="#">See the route</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Card 2 - Haldi -->
-                <div class="event-card card-2">
+                <!-- <div class="event-card card-2">
                     <div class="card-border">
                         <div class="card-pattern"></div>
                         <div class="flower-top"></div>
@@ -1799,10 +1918,10 @@
                             <a href="#">See the route</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Card 3 - Sangeet -->
-                <div class="event-card card-3">
+                <!-- <div class="event-card card-3">
                     <div class="card-border">
                         <div class="card-pattern"></div>
                         <div class="flower-top"></div>
@@ -1819,10 +1938,10 @@
                             <a href="#">See the route</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Card 4 - Engagement -->
-                <div class="event-card card-4">
+                <!-- <div class="event-card card-4">
                     <div class="card-border">
                         <div class="card-pattern"></div>
                         <div class="flower-top"></div>
@@ -1839,10 +1958,10 @@
                             <a href="#">See the route</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Card 5 - Muhurtham -->
-                <div class="event-card card-5">
+                <!-- <div class="event-card card-5">
                     <div class="card-border">
                         <div class="card-pattern"></div>
                         <div class="flower-top"></div>
@@ -1859,7 +1978,7 @@
                             <a href="#">See the route</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Card 6 - Reception -->
                 <div class="event-card card-6">
@@ -1883,16 +2002,15 @@
             </section>
 
             <!-- CTA - Location -->
-            <section class="cta-location" id="location">
+            <section class="cta-location" style="padding: 10px;" id="location">
                 <div class="cta-content">
                     <div>
                         <div class="cta-title">See the route</div>
                         <div class="cta-subtitle">Click to open the map</div>
                     </div>
-                    <div class="circle-button">
-                        <div class="circle-outer"></div>
-                        <div class="circle-inner"></div>
-                    </div>
+                
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.8667681436295!2d80.1900979741557!3d13.044151413285352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5266d2193d061b%3A0xd9474e101cebfd28!2sAshoka%20Park%20Inn!5e0!3m2!1sen!2sin!4v1772336876742!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  
                 </div>
             </section>
 
@@ -1920,7 +2038,7 @@
             </section>
 
             <!-- CTA - RSVP -->
-            <section class="cta-rsvp" id="rsvp">
+            <!-- <section class="cta-rsvp" id="rsvp">
                 <div class="rsvp-content">
                     <div>
                         <div class="rsvp-title">Please<br>rsvp</div>
@@ -1931,7 +2049,7 @@
                         <div class="circle-inner"></div>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
             <!-- Things to Know Section -->
             <section class="things-section" id="things-to-know">
@@ -1999,14 +2117,21 @@
                 </div>
             </section>
 
-            <!-- Footer -->
+            
+                        <!-- Footer -->
+                    <!-- Footer -->
             <footer class="footer">
                 <div class="footer-bg"></div>
 
                 <div class="footer-content">
                     <div class="countdown-section">
                         <div class="countdown-title">The countdown begins</div>
-                        <div class="countdown-timer" id="countdown">09<span>D</span> 18<span>H</span> 58<span>M</span></div>
+                        <div class="countdown-timer">
+                            <span id="days">00</span><span class="label">D</span>
+                            <span id="hours">00</span><span class="label">H</span>
+                            <span id="mins">00</span><span class="label">M</span>
+                            <span id="seconds">00</span><span class="label">S</span>
+                        </div>
                     </div>
                     
                     <div class="footer-text">
@@ -2014,12 +2139,12 @@
                     </div>
                     
                     <div class="copyright">
-                        © Vishu & Kavya 2026
+                        © SarathKumar & Nivetha 2026
                     </div>
                 </div>
             </footer>
-        </div>
-    </div>
+        </div> <!-- This closes main-container -->
+    </div> <!-- This closes framer-TCaaR -->
 
     <!-- JavaScript -->
     <script>
@@ -2028,36 +2153,59 @@
         const bgMusic = document.getElementById('bgMusic');
         let isPlaying = false;
 
-        musicPlayer.addEventListener('click', () => {
-            if (isPlaying) {
-                bgMusic.pause();
-                musicPlayer.style.background = 'linear-gradient(135deg, #ff6b6b, #ee5a24)';
-            } else {
-                bgMusic.play().catch(e => console.log('Audio play failed:', e));
-                musicPlayer.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
-            }
-            isPlaying = !isPlaying;
-        });
-
-        // Countdown Timer
-        function updateCountdown() {
-            const weddingDate = new Date('March 12, 2026 00:00:00').getTime();
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('countdown').innerHTML = 
-                `${days}<span>D</span> ${hours}<span>H</span> ${minutes}<span>M</span> ${seconds}<span>S</span>`;
+        if (musicPlayer && bgMusic) {
+            musicPlayer.addEventListener('click', () => {
+                if (isPlaying) {
+                    bgMusic.pause();
+                    musicPlayer.style.background = 'linear-gradient(135deg, #ff6b6b, #ee5a24)';
+                } else {
+                    bgMusic.play().catch(e => console.log('Audio play failed:', e));
+                    musicPlayer.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+                }
+                isPlaying = !isPlaying;
+            });
         }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+// Get the countdown elements
+const days = document.querySelector("#days");
+const hours = document.querySelector("#hours");
+const minutes = document.querySelector("#mins");
+const seconds = document.querySelector("#seconds");
 
-        // Smooth scroll for anchor links
+function updateWeddingCountdown() {
+    // Set the wedding date: March 8, 2026 at 6:00 PM
+    const weddingDate = new Date('2026-03-08T18:00:00').getTime();
+    const currentDate = new Date().getTime();
+    const diff = weddingDate - currentDate;
+    
+    // Time calculations
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    // Update the DOM elements
+    days.innerHTML = d < 10 ? '0' + d : d;
+    hours.innerHTML = h < 10 ? '0' + h : h;
+    minutes.innerHTML = m < 10 ? '0' + m : m;
+    seconds.innerHTML = s < 10 ? '0' + s : s;
+    
+    // If the countdown is over
+    if (diff < 0) {
+        clearInterval(timerInterval);
+        days.innerHTML = "00";
+        hours.innerHTML = "00";
+        minutes.innerHTML = "00";
+        seconds.innerHTML = "00";
+        document.querySelector(".countdown-title").innerHTML = "The wedding has begun! 🎉";
+    }
+}
+
+// Start the countdown
+const timerInterval = setInterval(updateWeddingCountdown, 1000);
+updateWeddingCountdown(); // Initial call
+
+// Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
