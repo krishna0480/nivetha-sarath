@@ -412,13 +412,13 @@
         }
 
         .cta-location {
-    padding: 20px 10px !important;
-    width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    background: transparent !important;
-}
+            padding: 20px 10px !important;
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            background: transparent !important;
+        }
 
 .cta-content {
     max-width: 800px !important;
@@ -612,12 +612,12 @@
             border-radius: 50%;
         }
 
-        .lantern-1 { top: 15%; left: 5%; animation-delay: 0s; }
-        .lantern-2 { top: 20%; right: 5%; animation-delay: -2s; }
-        .lantern-3 { top: 45%; left: 20%; animation-delay: -4s; width: 80px; height: 100px; }
-        .lantern-4 { top: 50%; right: 3%; animation-delay: -1s; }
-        .lantern-5 { top: 72%; left: 8%; animation-delay: -3s; width: 50px; height: 70px; }
-        .lantern-6 { top: 70%; right: 8%; animation-delay: -5s; }
+        .lantern-1 { top: 15%; left: 5%;  animation-delay: 0s;  width: 60px; height: 80px; }
+        .lantern-2 { top: 20%; left: 82%; animation-delay: -2s; width: 60px; height: 80px; }
+        .lantern-3 { top: 45%; left: 18%; animation-delay: -4s; width: 80px; height: 100px; }
+        .lantern-4 { top: 50%; left: 90%; animation-delay: -1s; width: 60px; height: 80px; }
+        .lantern-5 { top: 72%; left: 7%;  animation-delay: -3s; width: 50px; height: 70px; }
+        .lantern-6 { top: 70%; left: 85%; animation-delay: -5s; width: 60px; height: 80px; }
 
         @keyframes lanternFloat {
             0%   { transform: translateY(0)    rotate(0deg)  translateX(0);   }
@@ -934,19 +934,30 @@
             padding: 100px 0;
             display: flex;
             flex-direction: column;
-            /* background-color:  #d90429; */
             align-items: center;
             position: relative;
             z-index: 5;
-            /* background: rgba(0, 0, 0, 0.3); */
-            /* background-image: url("sub_hero.jpg");
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat; */
-            /* backdrop-filter: blur(10px); */
-            /* border-radius: 50px; */
-            /* margin: 50px 0; */
         }
+
+        /* Second lantern set inside invite section */
+        .lanterns-container-2 {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: visible;
+        }
+
+        .lantern-b1 { top: 10%; left: 4%;  animation-delay: -1s;  width: 55px; height: 75px; }
+        .lantern-b2 { top: 15%; left: 83%; animation-delay: -3s;  width: 50px; height: 70px; }
+        .lantern-b3 { top: 45%; left: 6%;  animation-delay: -5s;  width: 70px; height: 90px; }
+        .lantern-b4 { top: 48%; left: 88%; animation-delay: -2s;  width: 55px; height: 75px; }
+        .lantern-b5 { top: 75%; left: 3%;  animation-delay: -4s;  width: 45px; height: 65px; }
+        .lantern-b6 { top: 78%; left: 86%; animation-delay: -0.5s; width: 60px; height: 80px; }
 
         .om-symbol {
             width: 124px;
@@ -1125,9 +1136,9 @@
         .card-bg-pattern {
             position: absolute;
             inset: 0;
-                /* background-image:
-                    radial-gradient(circle at 15% 15%, rgba(255,215,0,0.12) 0%, transparent 45%),
-                    radial-gradient(circle at 85% 80%, rgba(255,140,0,0.09) 0%, transparent 45%); */
+            background-image:
+                radial-gradient(circle at 15% 15%, rgba(255,215,0,0.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(255,140,0,0.09) 0%, transparent 45%);
             z-index: 0;
         }
 
@@ -2235,8 +2246,8 @@
             </div>
         </section>
 
-        <!-- Animated Lanterns - overlaid on names section, full viewport width -->
-        <div class="lanterns-container" style="z-index: 99; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; overflow: visible;">
+        <!-- Animated Lanterns - full width spread across screen -->
+        <div class="lanterns-container" id="lanternsContainer" style="z-index: 99; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100vw; height: 100%; pointer-events: none; overflow: visible;">
         <div class="lantern lantern-1">
             <div class="lantern-top"></div>
             <div class="lantern-body">
@@ -2286,11 +2297,11 @@
             <div class="lantern-tassel"></div>
         </div>
     </div><!-- end lanterns-container -->
-        </div><!-- end names-lanterns-wrapper -->
+    </div><!-- end names-lanterns-wrapper -->
     </div><!-- end main-container -->
 
-    <!-- FULL WIDTH RESPONSIVE IMAGE SECTION - Below lanterns but above background -->
-    <section class="fullscreen-image-section" style="width: 100vw; height: 100%;  z-index: -1;">
+    <!-- FULL WIDTH RESPONSIVE IMAGE SECTION -->
+    <section class="fullscreen-image-section" style="width: 100vw; height: 100%; z-index: -1;">
         <div class="fullscreen-image-container" style=" width: 100%;  height: 100%;">
             <img src="marriage.jpg"
                  alt="Sarath and Nivetha - Wedding Couple"
@@ -2316,13 +2327,122 @@
                 <div class="om-symbol">ॐ</div>
     </section> -->
 
+
+    
+                   <!-- Animated Lanterns - full width spread across screen -->
+        <div class="lanterns-container" id="lanternsContainer" style="z-index: 99; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100vw; height: 100%; pointer-events: none; overflow: visible;">
+        <!-- <div class="lantern lantern-1">
+            <div class="lantern-top"></div>
+            <div class="lantern-body">
+                <div class="lantern-glow"></div>
+            </div>
+            <div class="lantern-bottom"></div>
+            <div class="lantern-tassel"></div>
+        </div> -->
+        <!-- <div class="lantern lantern-2">
+            <div class="lantern-top"></div>
+            <div class="lantern-body">
+                <div class="lantern-glow"></div>
+            </div>
+            <div class="lantern-bottom"></div>
+            <div class="lantern-tassel"></div>
+        </div> -->
+        <div class="lantern lantern-3">
+            <div class="lantern-top"></div>
+            <div class="lantern-body">
+                <div class="lantern-glow"></div>
+            </div>
+            <div class="lantern-bottom"></div>
+            <div class="lantern-tassel"></div>
+        </div>
+        <div class="lantern lantern-4">
+            <div class="lantern-top"></div>
+            <div class="lantern-body">
+                <div class="lantern-glow"></div>
+            </div>
+            <div class="lantern-bottom"></div>
+            <div class="lantern-tassel"></div>
+        </div>
+        <div class="lantern lantern-5">
+            <div class="lantern-top"></div>
+            <div class="lantern-body">
+                <div class="lantern-glow"></div>
+            </div>
+            <div class="lantern-bottom"></div>
+            <div class="lantern-tassel"></div>
+        </div>
+        <div class="lantern lantern-6">
+            <div class="lantern-top"></div>
+            <div class="lantern-body">
+                <div class="lantern-glow"></div>
+            </div>
+            <div class="lantern-bottom"></div>
+            <div class="lantern-tassel"></div>
+        </div>
+    </div><!-- end lanterns-container -->
+    </div><!-- end names-lanterns-wrapper -->
+    </div><!-- end main-container -->
+                
             <!-- Invite Section -->
-            <section class="invite-section" id="invite"     >
+            <section class="invite-section" id="invite">
+
+                <!-- Second lantern set for invite section -->
+                <div class="lanterns-container-2">
+                    <div class="lantern lantern-b1">
+                        <div class="lantern-top"></div>
+                        <div class="lantern-body"><div class="lantern-glow"></div></div>
+                        <div class="lantern-bottom"></div>
+                        <div class="lantern-tassel"></div>
+                    </div>
+
+                      <div class="lantern lantern-2">
+            <div class="lantern-top"></div>
+            <div class="lantern-body">
+                <div class="lantern-glow"></div>
+            </div>
+            <div class="lantern-bottom"></div>
+            <div class="lantern-tassel"></div>
+        </div>
+                    
+                    <div class="lantern lantern-b2">
+                        <div class="lantern-top"></div>
+                        <div class="lantern-body"><div class="lantern-glow"></div></div>
+                        <div class="lantern-bottom"></div>
+                        <div class="lantern-tassel"></div>
+                    </div>
+                    
+                    
+                    <div class="lantern lantern-b3">
+                        <div class="lantern-top"></div>
+                        <div class="lantern-body"><div class="lantern-glow"></div></div>
+                        <div class="lantern-bottom"></div>
+                        <div class="lantern-tassel"></div>
+                    </div>
+                    <!-- <div class="lantern lantern-b4">
+                        <div class="lantern-top"></div>
+                        <div class="lantern-body"><div class="lantern-glow"></div></div>
+                        <div class="lantern-bottom"></div>
+                        <div class="lantern-tassel"></div>
+                    </div>
+                     -->
+                    <!-- <div class="lantern lantern-b5">
+                        <div class="lantern-top"></div>
+                        <div class="lantern-body"><div class="lantern-glow"></div></div>
+                        <div class="lantern-bottom"></div>
+                        <div class="lantern-tassel"></div>
+                    </div> -->
+                    <div class="lantern lantern-b6">
+                        <div class="lantern-top"></div>
+                        <div class="lantern-body"><div class="lantern-glow"></div></div>
+                        <div class="lantern-bottom"></div>
+                        <div class="lantern-tassel"></div>
+                    </div>
+                </div>
                
                 
                 <!-- Ganesha Image -->
                 <!-- <div class="ganesha-image">🐘</div> -->
-                
+
                 <div class="blessings-text">
                     <p>Wedding Reception</p>
                     <p>With great pleasure and joy,</p>
