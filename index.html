@@ -95,77 +95,227 @@
             50% { opacity: 0.7; }
         }
 
-        /* Floating Flowers Animation */
-        .floating-flowers {
-            position: fixed;
-            width: 100%;
-            height: 100%;
+        /* ============================================
+           ELEGANT FLOATING SVG ELEMENTS — WEDDING
+           All artwork is 100% original hand-drawn SVG
+           ============================================ */
+
+        .floating-elements {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
-            z-index: 0;
+            z-index: 99999;
+            overflow: hidden;
         }
 
-        .flower {
+        /* Base for all floating elements (img or span) */
+        .float-emoji {
             position: absolute;
-            width: 40px;
-            height: 40px;
-            animation: float 20s linear infinite;
-            opacity: 0.3;
+            opacity: 0;
+            line-height: 1;
+            user-select: none;
+            display: inline-block;
+        }
+        /* img variant — size controlled by width/height */
+        .float-emoji img, img.float-emoji {
+            object-fit: contain;
+        }
+        img.float-emoji                    { width: 28px;  height: 28px;  object-fit: contain; }
+        img.float-emoji.petal-anim         { width: 20px;  height: 28px;  }
+        img.float-emoji.marigold-anim      { width: 28px;  height: 28px;  }
+        img.float-emoji.lotus-anim         { width: 18px;  height: 24px;  }
+        img.float-emoji.leaf-anim          { width: 14px;  height: 22px;  }
+        img.float-emoji.diya-anim          { width: 22px;  height: 24px;  }
+        img.float-emoji.sparkle-anim       { width: 18px;  height: 18px;  }
+        img.float-emoji.sparkle-anim.large { width: 18px;  height: 18px;  }
+        img.float-emoji.sparkle-anim.medium{ width: 12px;  height: 12px;  }
+        img.float-emoji.sparkle-anim.small { width: 8px;   height: 8px;   }
+        img.float-emoji.paisley-anim       { width: 18px;  height: 18px;  }
+        img.float-emoji.bead-anim          { width: 12px;  height: 12px;  }
+
+        /* ========================
+           SIZE VARIANTS
+           ======================== */
+        .float-emoji.large  { font-size: 28px; width: 48px; height: 48px; }
+        .float-emoji.medium { font-size: 20px; width: 36px; height: 36px; }
+        .float-emoji.small  { font-size: 14px; width: 24px; height: 24px; }
+
+        /* ========================
+           ANIMATION KEYFRAMES
+           ======================== */
+
+        /* Petals fall from top, drifting sideways */
+        @keyframes petalFall {
+            0%   { transform: translateY(-60px) translateX(0)   rotate(0deg)   scale(0.85); opacity: 0; }
+            6%   { opacity: 0.75; }
+            85%  { opacity: 0.6; }
+            100% { transform: translateY(108vh)  translateX(70px)  rotate(500deg) scale(1.05); opacity: 0; }
         }
 
-        .flower::before,
-        .flower::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 40px;
-            background: linear-gradient(45deg, #ff69b4, #ff1493);
-            border-radius: 50%;
-            transform-origin: center;
+        /* Marigolds breathe and bob gently */
+        @keyframes marigoldBob {
+            0%   { transform: translateY(0)     rotate(0deg)   scale(1);    opacity: 0; }
+            8%   { opacity: 0.88; }
+            30%  { transform: translateY(-22px)  rotate(60deg)  scale(1.12); opacity: 0.85; }
+            60%  { transform: translateY(-44px)  rotate(140deg) scale(1.05); opacity: 0.75; }
+            90%  { transform: translateY(-22px)  rotate(280deg) scale(0.95); opacity: 0.55; }
+            100% { transform: translateY(0)     rotate(360deg) scale(1);    opacity: 0; }
         }
 
-        .flower::before {
-            transform: rotate(45deg);
+        /* Lotus petals drift upward and fade */
+        @keyframes lotusDrift {
+            0%   { transform: translateY(10px)  translateX(0)   rotate(0deg)   scale(0.9); opacity: 0; }
+            10%  { opacity: 0.8; }
+            50%  { transform: translateY(-42px) translateX(-18px) rotate(-25deg) scale(1.1); opacity: 0.7; }
+            90%  { opacity: 0.45; }
+            100% { transform: translateY(-88px) translateX(8px)  rotate(18deg)  scale(0.8); opacity: 0; }
         }
 
-        .flower::after {
-            transform: rotate(-45deg);
+        /* Leaves sway and rise */
+        @keyframes leafSway {
+            0%   { transform: translateY(0)    translateX(0)    rotate(-18deg) scale(0.9); opacity: 0; }
+            10%  { opacity: 0.72; }
+            35%  { transform: translateY(-28px) translateX(14px) rotate(8deg)  scale(1.0); }
+            65%  { transform: translateY(-52px) translateX(-8px) rotate(-14deg) scale(1.05); opacity: 0.6; }
+            90%  { opacity: 0.4; }
+            100% { transform: translateY(-82px) translateX(4px)  rotate(22deg) scale(0.88); opacity: 0; }
         }
 
-        .flower-1 { top: 10%; left: 5%; animation-delay: 0s; }
-        .flower-2 { top: 20%; right: 8%; animation-delay: -2s; width: 60px; height: 60px; }
-        .flower-3 { bottom: 15%; left: 12%; animation-delay: -4s; }
-        .flower-4 { bottom: 25%; right: 15%; animation-delay: -6s; width: 50px; height: 50px; }
-        .flower-5 { top: 40%; left: 20%; animation-delay: -8s; }
-        .flower-6 { top: 70%; right: 25%; animation-delay: -10s; width: 55px; height: 55px; }
+        /* Diyas glow and rise slowly */
+        @keyframes diyaRise {
+            0%   { transform: translateY(0)    scale(1);    opacity: 0; }
+            12%  { opacity: 0.92; }
+            50%  { transform: translateY(-28px) scale(1.08); opacity: 0.85; }
+            88%  { opacity: 0.6; }
+            100% { transform: translateY(-58px) scale(0.9); opacity: 0; }
+        }
 
-        .flower-1::before, .flower-1::after { background: linear-gradient(45deg, #ffd700, #ffa500); }
-        .flower-2::before, .flower-2::after { background: linear-gradient(45deg, #da70d6, #9932cc); }
-        .flower-3::before, .flower-3::after { background: linear-gradient(45deg, #f08080, #cd5c5c); }
-        .flower-4::before, .flower-4::after { background: linear-gradient(45deg, #90ee90, #32cd32); }
-        .flower-5::before, .flower-5::after { background: linear-gradient(45deg, #87ceeb, #4169e1); }
-        .flower-6::before, .flower-6::after { background: linear-gradient(45deg, #ffb6c1, #ff69b4); }
+        /* Sparkles twinkle in/out */
+        @keyframes sparkleTwinkle {
+            0%   { transform: scale(0) rotate(0deg);   opacity: 0; }
+            20%  { transform: scale(1.3) rotate(72deg); opacity: 1; }
+            50%  { transform: scale(0.8) rotate(180deg);opacity: 0.65; }
+            80%  { transform: scale(1.2) rotate(288deg);opacity: 0.9; }
+            100% { transform: scale(0) rotate(360deg); opacity: 0; }
+        }
 
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg) scale(1);
-                opacity: 0.3;
-            }
-            25% {
-                transform: translateY(-20px) rotate(90deg) scale(1.1);
-                opacity: 0.5;
-            }
-            50% {
-                transform: translateY(-40px) rotate(180deg) scale(1.2);
-                opacity: 0.7;
-            }
-            75% {
-                transform: translateY(-20px) rotate(270deg) scale(1.1);
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(0) rotate(360deg) scale(1);
-                opacity: 0.3;
-            }
+        /* Paisleys float and rotate */
+        @keyframes paisleyFloat {
+            0%   { transform: translateY(0)     translateX(0)   rotate(0deg)  scale(0.9); opacity: 0; }
+            10%  { opacity: 0.7; }
+            40%  { transform: translateY(-30px) translateX(12px) rotate(20deg) scale(1.05); opacity: 0.65; }
+            70%  { transform: translateY(-55px) translateX(-6px) rotate(-10deg) scale(1.0); opacity: 0.55; }
+            95%  { opacity: 0.3; }
+            100% { transform: translateY(-75px) translateX(4px) rotate(15deg) scale(0.88); opacity: 0; }
+        }
+
+        /* Beads float up */
+        @keyframes beadFloat {
+            0%   { transform: translateY(0)    translateX(0)   scale(1);    opacity: 0; }
+            10%  { opacity: 0.9; }
+            50%  { transform: translateY(-42px) translateX(18px) scale(1.2); opacity: 0.8; }
+            90%  { opacity: 0.5; }
+            100% { transform: translateY(-80px) translateX(-4px) scale(0.8); opacity: 0; }
+        }
+
+        /* ========================
+           ANIMATION ASSIGNMENTS
+           ======================== */
+        .petal-anim   { animation: petalFall     linear      infinite; font-size: 14px; }
+        .marigold-anim{ animation: marigoldBob   ease-in-out infinite; font-size: 20px; }
+        .lotus-anim   { animation: lotusDrift    ease-in-out infinite; font-size: 16px; }
+        .leaf-anim    { animation: leafSway      ease-in-out infinite; font-size: 13px; }
+        .diya-anim    { animation: diyaRise      ease-in-out infinite; font-size: 18px; }
+        .sparkle-anim { animation: sparkleTwinkle ease-in-out infinite; }
+        .sparkle-anim.large  { font-size: 14px; }
+        .sparkle-anim.medium { font-size: 10px; }
+        .sparkle-anim.small  { font-size: 7px; }
+        .paisley-anim { animation: paisleyFloat  ease-in-out infinite; font-size: 16px; }
+        .bead-anim    { animation: beadFloat     linear      infinite; font-size: 10px; }
+
+        /* ========================
+           POSITIONS + TIMING
+           ======================== */
+        /* Petals */
+        .p1  { top: -5%;  left:  3%;  animation-duration: 14s; animation-delay:  0s;   }
+        .p2  { top: -5%;  left: 18%;  animation-duration: 18s; animation-delay: -3s;   }
+        .p3  { top: -5%;  left: 34%;  animation-duration: 12s; animation-delay: -7s;   }
+        .p4  { top: -5%;  left: 52%;  animation-duration: 16s; animation-delay: -1s;   }
+        .p5  { top: -5%;  left: 68%;  animation-duration: 11s; animation-delay: -5s;   }
+        .p6  { top: -5%;  left: 82%;  animation-duration: 15s; animation-delay: -9s;   }
+        .p7  { top: -5%;  left: 94%;  animation-duration: 13s; animation-delay: -2s;   }
+        .p8  { top: 20%;  left:  0%;  animation-duration: 17s; animation-delay: -4s;   }
+        .p9  { top: 50%;  left: 97%;  animation-duration: 19s; animation-delay: -6s;   }
+        .p10 { top: 70%;  left:  1%;  animation-duration: 14s; animation-delay: -11s;  }
+
+        /* Marigolds */
+        .mg1 { top: 10%; left:  7%;  animation-duration: 24s; animation-delay:  0s;   }
+        .mg2 { top: 25%; right: 6%;  animation-duration: 28s; animation-delay: -5s;   }
+        .mg3 { top: 55%; left:  4%;  animation-duration: 22s; animation-delay:-10s;   }
+        .mg4 { top: 75%; right: 9%;  animation-duration: 26s; animation-delay: -3s;   }
+        .mg5 { top: 40%; left: 92%;  animation-duration: 30s; animation-delay: -7s;   }
+        .mg6 { top: 85%; left: 12%;  animation-duration: 20s; animation-delay:-14s;   }
+
+        /* Lotus */
+        .lp1 { top: 20%; left:  7%;  animation-duration: 16s; animation-delay: -1s;   }
+        .lp2 { top: 45%; right: 5%;  animation-duration: 20s; animation-delay: -7s;   }
+        .lp3 { top: 65%; left:  5%;  animation-duration: 14s; animation-delay: -3s;   }
+        .lp4 { top: 85%; right: 8%;  animation-duration: 18s; animation-delay:-10s;   }
+        .lp5 { top: 35%; left: 93%;  animation-duration: 22s; animation-delay: -5s;   }
+
+        /* Leaves */
+        .gl1 { top: 15%; left:  2%;  animation-duration: 18s; animation-delay: -2s;   }
+        .gl2 { top: 30%; right: 3%;  animation-duration: 22s; animation-delay: -8s;   }
+        .gl3 { top: 60%; left: 96%;  animation-duration: 16s; animation-delay: -4s;   }
+        .gl4 { top: 80%; left:  3%;  animation-duration: 20s; animation-delay:-11s;   }
+        .gl5 { top: 45%; right: 2%;  animation-duration: 25s; animation-delay: -6s;   }
+        .gl6 { top:  5%; left: 45%;  animation-duration: 19s; animation-delay:-15s;   }
+
+        /* Diyas */
+        .dy1 { top: 30%; left:  5%;  animation-duration: 12s; animation-delay:  0s;   }
+        .dy2 { top: 55%; right: 4%;  animation-duration: 15s; animation-delay: -4s;   }
+        .dy3 { top: 75%; left:  8%;  animation-duration: 13s; animation-delay: -8s;   }
+        .dy4 { top: 20%; right: 7%;  animation-duration: 11s; animation-delay: -2s;   }
+
+        /* Sparkles */
+        .sp1  { top: 12%; left: 15%; animation-duration: 4s;   animation-delay:  0s;   }
+        .sp2  { top: 28%; left: 82%; animation-duration: 5s;   animation-delay: -1s;   }
+        .sp3  { top: 48%; left: 22%; animation-duration: 3.5s; animation-delay: -0.5s; }
+        .sp4  { top: 62%; left: 75%; animation-duration: 4.5s; animation-delay: -2s;   }
+        .sp5  { top: 78%; left: 40%; animation-duration: 3s;   animation-delay: -1.5s; }
+        .sp6  { top: 18%; left: 58%; animation-duration: 6s;   animation-delay: -3s;   }
+        .sp7  { top: 38%; left: 88%; animation-duration: 4s;   animation-delay: -0.8s; }
+        .sp8  { top: 55%; left: 10%; animation-duration: 5.5s; animation-delay: -2.5s; }
+        .sp9  { top: 72%; left: 62%; animation-duration: 3.8s; animation-delay: -1.2s; }
+        .sp10 { top: 88%; left: 28%; animation-duration: 4.2s; animation-delay: -3.5s; }
+        .sp11 { top:  5%; left: 72%; animation-duration: 5s;   animation-delay: -4s;   }
+        .sp12 { top: 92%; left: 85%; animation-duration: 3.2s; animation-delay: -0.3s; }
+
+        /* Paisleys */
+        .ps1 { top: 22%; left:  6%;  animation-duration: 20s; animation-delay:  0s;   }
+        .ps2 { top: 50%; right: 5%;  animation-duration: 24s; animation-delay: -6s;   }
+        .ps3 { top: 70%; left:  9%;  animation-duration: 18s; animation-delay:-12s;   }
+        .ps4 { top: 35%; right:10%;  animation-duration: 22s; animation-delay: -3s;   }
+
+        /* Beads */
+        .bd1 { top: 18%; left: 12%;  animation-duration:  9s; animation-delay:  0s;   }
+        .bd2 { top: 40%; right:11%;  animation-duration: 11s; animation-delay: -3s;   }
+        .bd3 { top: 68%; left: 10%;  animation-duration: 10s; animation-delay: -6s;   }
+        .bd4 { top: 82%; right:13%;  animation-duration: 12s; animation-delay: -1s;   }
+        .bd5 { top: 50%; left: 88%;  animation-duration:  8s; animation-delay: -4s;   }
+        .bd6 { top: 25%; left: 85%;  animation-duration: 13s; animation-delay: -7s;   }
+
+        /* ========================
+           MOBILE RESPONSIVE
+           ======================== */
+        @media (max-width: 768px) {
+            .marigold-anim { font-size: 22px; }
+            .paisley-anim  { font-size: 18px; }
+            .diya-anim     { font-size: 20px; }
+            .sp1, .sp3, .sp5, .sp7, .sp9, .sp11 { display: none; }
+            .bd3, .bd5 { display: none; }
+            .ps3, .ps4 { display: none; }
         }
 
         /* Main Container */
@@ -462,23 +612,20 @@
             border-radius: 50%;
         }
 
-        .lantern-1 { top: 15%; left: 10%; animation-delay: 0s; }
-        .lantern-2 { top: 25%; right: 12%; animation-delay: -2s; }
-        .lantern-3 { top: 45%; left: 15%; animation-delay: -4s; width: 80px; height: 100px; }
-        .lantern-4 { top: 60%; right: 20%; animation-delay: -1s; }
-        .lantern-5 { top: 75%; left: 25%; animation-delay: -3s; width: 50px; height: 70px; }
-        .lantern-6 { top: 35%; left: 30%; animation-delay: -5s; }
+        .lantern-1 { top: 15%; left: 5%; animation-delay: 0s; }
+        .lantern-2 { top: 20%; right: 5%; animation-delay: -2s; }
+        .lantern-3 { top: 45%; left: 20%; animation-delay: -4s; width: 80px; height: 100px; }
+        .lantern-4 { top: 50%; right: 3%; animation-delay: -1s; }
+        .lantern-5 { top: 72%; left: 8%; animation-delay: -3s; width: 50px; height: 70px; }
+        .lantern-6 { top: 70%; right: 8%; animation-delay: -5s; }
 
         @keyframes lanternFloat {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            25% {
-                transform: translateY(-20px) rotate(5deg);
-            }
-            75% {
-                transform: translateY(10px) rotate(-5deg);
-            }
+            0%   { transform: translateY(0)    rotate(0deg)  translateX(0);   }
+            20%  { transform: translateY(-18px) rotate(4deg)  translateX(6px);  }
+            40%  { transform: translateY(-32px) rotate(-3deg) translateX(-4px); }
+            60%  { transform: translateY(-22px) rotate(5deg)  translateX(8px);  }
+            80%  { transform: translateY(-10px) rotate(-2deg) translateX(-3px); }
+            100% { transform: translateY(0)    rotate(0deg)  translateX(0);   }
         }
 
         @keyframes shine {
@@ -511,7 +658,7 @@
 
         .groom-name {
             font-family: 'Cormorant', serif;
-            font-size: 100px;
+            font-size: 75px;
             font-weight: 400;
             letter-spacing: -0.01em;
             line-height: 60px;
@@ -787,7 +934,7 @@
             padding: 100px 0;
             display: flex;
             flex-direction: column;
-            background-color:  #d90429;
+            /* background-color:  #d90429; */
             align-items: center;
             position: relative;
             z-index: 5;
@@ -892,7 +1039,7 @@
 
         .couple-names h2 {
             font-family: 'Cormorant Upright', serif;
-            font-size: 150px;
+            font-size: 120px;
             line-height: 190.1%;
             color: #f3ecba;
             text-shadow: 0 0 20px rgba(243, 236, 186, 0.5);
@@ -900,15 +1047,16 @@
 
         .couple-names .ampersand {
             font-family: 'Cormorant Upright', serif;
-            font-size: 156px;
+            font-size: 126px;
             line-height: 110%;
             color: #f3ecba;
         }
 
         .couple-names h3 {
             font-family: 'Cormorant', serif;
-            font-size: 150px;
+            font-size: 120px;
             line-height: 60.1%;
+            text-shadow: 0 0 20px rgba(243, 236, 186, 0.5);
             color: #f3ecba;
         }
 
@@ -922,62 +1070,218 @@
             margin: 10px 0;
         }
 
-        /* Events Section */
+        /* ================================================
+           EVENTS SECTION
+           ================================================ */
+
         .events-section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
             width: 100%;
-            padding: 50px 0;
             position: relative;
             z-index: 5;
+            display: flex;
+            justify-content: center;
+            padding: 50px 20px;
+        }
+
+        .events-sticky-wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .event-card {
-            width: 480px;
-            height: 400px;
-            position: relative;
+            width: min(90vw, 420px);
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(255,215,0,0.15);
+            border: 1.5px solid rgba(255,215,0,0.35);
+            background: linear-gradient(160deg, #1a1230 0%, #0e0c1e 100%);
+        }
+
+        /* Card inner layout */
+        .card-inner {
             display: flex;
             flex-direction: column;
             align-items: center;
-            opacity: 0;
-            animation: cardAppear 0.6s ease forwards;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .event-card:hover {
-            transform: translateY(-10px) rotateY(5deg);
-        }
-
-        @keyframes cardAppear {
-            from {
-                opacity: 0;
-                transform: translateY(50px) rotateY(-10deg);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) rotateY(0);
-            }
-        }
-
-        .card-1 { animation-delay: 0.1s; }
-        .card-2 { animation-delay: 0.2s; }
-        .card-3 { animation-delay: 0.3s; }
-        .card-4 { animation-delay: 0.4s; }
-        .card-5 { animation-delay: 0.5s; }
-        .card-6 { animation-delay: 0.6s; }
-
-        .card-border {
-            width: 295px;
-            height: 377px;
-            border-radius: 180px;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            justify-content: center;
+            padding: 48px 32px 40px;
+            min-height: 440px;
             position: relative;
-            overflow: hidden;
-            background: linear-gradient(145deg, #2a2a4a, #1a1a3a);
-            border: 2px solid rgba(255, 215, 0, 0.3);
+            z-index: 2;
+            gap: 22px;
+            text-align: center;
+        }
+
+        /* Decorative top accent line */
+        .card-accent {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ffd700, #ffa500, transparent);
+        }
+
+        /* Card bg pattern */
+        .card-bg-pattern {
+            position: absolute;
+            inset: 0;
+                /* background-image:
+                    radial-gradient(circle at 15% 15%, rgba(255,215,0,0.12) 0%, transparent 45%),
+                    radial-gradient(circle at 85% 80%, rgba(255,140,0,0.09) 0%, transparent 45%); */
+            z-index: 0;
+        }
+
+        /* Event number badge */
+        .event-number {
+            font-family: 'Cormorant Upright', serif;
+            font-size: 13px;
+            letter-spacing: 0.2em;
+            color: rgba(255,215,0,0.5);
+            text-transform: uppercase;
+        }
+
+        /* Divider */
+        .card-divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.6), transparent);
+        }
+
+        .event-name {
+            font-family: 'Aboreto', sans-serif;
+            font-size: 38px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffd700, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .event-info-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 20px 28px;
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(6px);
+            border-radius: 18px;
+            border: 1px solid rgba(255,215,0,0.15);
+            width: 100%;
+        }
+
+        .event-date, .event-venue, .event-time {
+            font-family: 'Yaldevi', sans-serif;
+            font-size: 15px;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.5;
+        }
+
+        .event-venue {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        .map-link a {
+            font-family: 'Aboreto', sans-serif;
+            font-size: 13px;
+            color: #ffd700;
+            text-decoration: none;
+            padding: 8px 22px;
+            border: 1px solid rgba(255,215,0,0.5);
+            border-radius: 30px;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .map-link a:hover {
+            background: rgba(255,215,0,0.15);
+            border-color: #ffd700;
+        }
+
+        /* Scroll progress indicator */
+        .events-progress {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .progress-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255,215,0,0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,215,0,0.4);
+        }
+
+        .progress-dot.active {
+            background: #ffd700;
+            transform: scale(1.3);
+        }
+
+        /* Scroll hint arrow */
+        .scroll-hint {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            z-index: 10;
+        }
+
+        .scroll-hint.hidden { opacity: 0; pointer-events: none; }
+
+        .scroll-hint-text {
+            font-family: 'Aboreto', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            color: rgba(255,215,0,0.6);
+        }
+
+        .scroll-arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 1.5px solid rgba(255,215,0,0.6);
+            border-bottom: 1.5px solid rgba(255,215,0,0.6);
+            transform: rotate(45deg);
+            animation: arrowBounce 1.4s ease-in-out infinite;
+        }
+
+        @keyframes arrowBounce {
+            0%, 100% { transform: rotate(45deg) translateY(0); }
+            50% { transform: rotate(45deg) translateY(5px); }
+        }
+
+        /* ---- Legacy CSS kept to avoid breaking other things ---- */
+        .card-border {
+            display: none; /* replaced by card-inner layout */
+        }
+
+        /* Smooth scroll-driven transitions */
+        .event-card {
+            transition: transform 0.12s linear, opacity 0.12s linear;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            .card-inner {
+                padding: 36px 20px 32px;
+                min-height: 380px;
+                gap: 16px;
+            }
+            .event-name { font-size: 30px; }
+            .event-info-block { padding: 16px 18px; }
         }
 
         .card-pattern {
@@ -1050,7 +1354,7 @@
         }
 
         .event-date, .event-venue, .event-time {
-            font-family: 'Cormorant', serif;
+             font-family: 'Aboreto', sans-serif;
             font-size: 14px;
             line-height: 100%;
             text-align: center;
@@ -1058,7 +1362,7 @@
         }
 
         .map-link {
-            font-family: 'Cormorant', serif;
+             font-family: 'Aboreto', sans-serif;
             font-size: 14px;
             font-weight: 700;
             line-height: 100%;
@@ -1227,7 +1531,7 @@
 
         .carousel-frame {
             width: 400px;
-            height: 500px;
+            height: 550px;
             position: relative;
             border-radius: 30px;
             overflow: hidden;
@@ -1241,11 +1545,11 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 350px;
-            height: 450px;
+            height: 500px;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            background: #2a2a4a;
+            /* background: #2a2a4a; */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1452,55 +1756,59 @@
             }
 
             .lantern {
-                width: 35px !important;
-                height: 50px !important;
+                width: 30px !important;
+                height: 44px !important;
                 animation-duration: 6s;
             }
 
             .lantern-1 { 
-                top: 8%; 
-                left: 5%; 
-                width: 30px !important; 
-                height: 45px !important;
+                top: 12% !important; 
+                left: 4% !important; 
+                width: 26px !important; 
+                height: 38px !important;
+                animation-delay: 0s;
             }
             
             .lantern-2 { 
-                top: 15%; 
-                right: 8%; 
-                width: 28px !important; 
-                height: 42px !important;
+                top: 18% !important; 
+                right: 4% !important;
+                left: auto !important;
+                width: 24px !important; 
+                height: 35px !important;
                 animation-delay: -1s;
             }
             
             .lantern-3 { 
-                top: 40%; 
-                left: 3%; 
-                width: 45px !important; 
-                height: 60px !important;
+                top: 45% !important; 
+                left: 2% !important; 
+                width: 36px !important; 
+                height: 52px !important;
                 animation-delay: -2s;
             }
             
             .lantern-4 { 
-                top: 65%; 
-                right: 5%; 
-                width: 32px !important; 
-                height: 48px !important;
+                top: 50% !important; 
+                right: 2% !important;
+                left: auto !important;
+                width: 28px !important; 
+                height: 42px !important;
                 animation-delay: -0.5s;
             }
             
             .lantern-5 { 
-                top: 75%; 
-                left: 8%; 
-                width: 25px !important; 
-                height: 38px !important;
+                top: 72% !important; 
+                left: 5% !important; 
+                width: 22px !important; 
+                height: 32px !important;
                 animation-delay: -1.5s;
             }
             
             .lantern-6 { 
-                top: 30%; 
-                right: 3%; 
-                width: 35px !important; 
-                height: 52px !important;
+                top: 70% !important; 
+                right: 5% !important;
+                left: auto !important;
+                width: 28px !important; 
+                height: 44px !important;
                 animation-delay: -2.5s;
             }
 
@@ -1606,12 +1914,12 @@
 
             .carousel-frame {
                 width: 300px;
-                height: 400px;
+                height: 450px;
             }
 
             .carousel-images {
                 width: 250px;
-                height: 350px;
+                height: 400px;
             }
 
             .buy-button-container {
@@ -1629,12 +1937,12 @@
 
         /* Extra small devices */
         @media (max-width: 480px) {
-            .lantern-1 { width: 25px !important; height: 38px !important; }
-            .lantern-2 { width: 22px !important; height: 35px !important; }
-            .lantern-3 { width: 35px !important; height: 48px !important; }
-            .lantern-4 { width: 28px !important; height: 42px !important; }
-            .lantern-5 { width: 20px !important; height: 32px !important; }
-            .lantern-6 { width: 30px !important; height: 45px !important; display: none; }
+            .lantern-1 { width: 22px !important; height: 32px !important; top: 10% !important; left: 3% !important; }
+            .lantern-2 { width: 20px !important; height: 28px !important; top: 16% !important; right: 3% !important; left: auto !important; }
+            .lantern-3 { width: 30px !important; height: 44px !important; top: 45% !important; left: 1% !important; }
+            .lantern-4 { width: 24px !important; height: 36px !important; top: 50% !important; right: 1% !important; left: auto !important; }
+            .lantern-5 { width: 18px !important; height: 26px !important; top: 72% !important; left: 4% !important; }
+            .lantern-6 { width: 24px !important; height: 38px !important; top: 70% !important; right: 4% !important; left: auto !important; }
               .fullscreen-image-section {
             height: 25vh !important;
         }
@@ -1721,6 +2029,16 @@
     .invite-section{
         margin-top: 20vh;
     }
+
+    .bride-groom-content{
+        padding-inline: 10px;
+    }
+
+    .footer{
+        padding-inline: 10px;
+    }
+
+
         }
 
         /* Tablet devices */
@@ -1730,12 +2048,12 @@
                 height: 65px !important;
             }
             
-            .lantern-1 { width: 40px !important; height: 60px !important; }
-            .lantern-2 { width: 38px !important; height: 55px !important; }
-            .lantern-3 { width: 55px !important; height: 75px !important; }
-            .lantern-4 { width: 42px !important; height: 62px !important; }
-            .lantern-5 { width: 35px !important; height: 52px !important; }
-            .lantern-6 { width: 45px !important; height: 65px !important;  }
+            .lantern-1 { width: 40px !important; height: 60px !important; top: 12% !important; left: 4% !important; }
+            .lantern-2 { width: 38px !important; height: 55px !important; top: 18% !important; right: 4% !important; left: auto !important; }
+            .lantern-3 { width: 55px !important; height: 75px !important; top: 45% !important; left: 2% !important; }
+            .lantern-4 { width: 42px !important; height: 62px !important; top: 50% !important; right: 2% !important; left: auto !important; }
+            .lantern-5 { width: 35px !important; height: 52px !important; top: 72% !important; left: 6% !important; }
+            .lantern-6 { width: 45px !important; height: 65px !important; top: 70% !important; right: 6% !important; left: auto !important; }
                 .fullscreen-image-section {
             height: 50vh !important;
         }
@@ -1756,69 +2074,146 @@
         <div class="stars"></div>
     </div>
 
-    <!-- Floating Flowers -->
-    <div class="floating-flowers">
-        <div class="flower flower-1"></div>
-        <div class="flower flower-2"></div>
-        <div class="flower flower-3"></div>
-        <div class="flower flower-4"></div>
-        <div class="flower flower-5"></div>
-        <div class="flower flower-6"></div>
+    <!-- ✨ Elegant Floating Elements - Wedding Theme ✨ -->
+    <!-- ✨ Floating Elements ✨
+         TO REPLACE WITH AI IMAGES: set src="your-image.png" on each <img>
+         Each image should be a ~200x200px PNG with transparent background.
+         See AI image generation prompts in the comment below.
+
+         ═══════════════════════════════════════════════════════
+         AI IMAGE GENERATION PROMPTS (use any AI image tool):
+         ═══════════════════════════════════════════════════════
+
+         🌸 ROSE PETAL (files: petal1.png, petal2.png, petal3.png)
+         "A single pink rose petal, soft gradient from blush pink to deep rose,
+          delicate texture, transparent background, top-down view, isolated,
+          no shadow, PNG format, 200x200px"
+
+         🌺 RED FLOWER PETAL (files: petal-red1.png, petal-red2.png)
+         "A single red jasmine flower petal, rich crimson to scarlet gradient,
+          silky texture, transparent background, isolated, no shadow, 200x200px PNG"
+
+         🌼 YELLOW PETAL (files: petal-yellow1.png)
+         "A single marigold flower petal, warm golden yellow to amber gradient,
+          soft texture, transparent background, isolated, top view, 200x200px PNG"
+
+         🌻 MARIGOLD FLOWER (files: marigold1.png, marigold2.png)
+         "A full marigold flower blossom, orange and golden yellow petals,
+          viewed from above, vibrant, transparent background, isolated,
+          no stem, no shadow, 200x200px PNG"
+
+         🪷 LOTUS FLOWER (files: lotus1.png, lotus2.png)
+         "A blooming pink lotus flower, layered petals, soft pink to white gradient,
+          top-down view, transparent background, isolated, elegant, 200x200px PNG"
+
+         🍃 GREEN LEAF (files: leaf1.png, leaf2.png)
+         "A single mango tree leaf, deep green with golden tip, natural veins,
+          transparent background, isolated, no stem, 200x200px PNG"
+
+         🍂 GOLDEN LEAF (files: leaf-gold1.png)
+         "A single dried autumn leaf, rich golden amber color, elegant veins,
+          transparent background, isolated, 200x200px PNG"
+
+         🪔 DIYA LAMP (files: diya1.png, diya2.png)
+         "A traditional Indian clay diya oil lamp with a lit flame,
+          warm golden glow, terracotta bowl, transparent background,
+          isolated, side view, no shadow, 200x200px PNG"
+
+         ✨ SPARKLE (files: sparkle1.png, sparkle2.png)
+         "A 4-point golden sparkle star, bright white center fading to gold,
+          transparent background, isolated, 200x200px PNG"
+
+         💍 GOLD RING (files: ring1.png)
+         "A golden wedding ring, shiny 22k gold, simple band with floral
+          engraving, transparent background, isolated, angled view, 200x200px PNG"
+
+         ❤️ HEART (files: heart1.png)
+         "A rich red heart shape, glossy finish, soft shadow,
+          transparent background, isolated, 200x200px PNG"
+
+         📿 BEAD NECKLACE (files: bead1.png)
+         "A short string of gold and black mangalsutra beads,
+          traditional Indian wedding jewelry, transparent background,
+          isolated, 200x200px PNG"
+
+         ═══════════════════════════════════════════════════════
+         HOW TO SWAP: Replace src="#" with src="your-file.png"
+         ═══════════════════════════════════════════════════════
+    -->
+         <div class="framer-TCaaR" style="position: relative; z-index: 10000;">
+    <div class="floating-elements">
+
+        <!-- Rose Petals — replace src with petal1.png, petal2.png etc. -->
+        <img class="float-emoji petal-anim p1"  src="pink_rose_pedal-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌸"/><span style="display:none" class="float-emoji petal-anim p1">🌸</span>
+        <img class="float-emoji petal-anim p2"  src="red_rose_pedal-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌺"/><span style="display:none" class="float-emoji petal-anim p2">🌺</span>
+        <img class="float-emoji petal-anim p3"  src="pink_rose_pedal-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌸"/><span style="display:none" class="float-emoji petal-anim p3">🌸</span>
+        <img class="float-emoji petal-anim p4"  src="red_rose_pedal-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌼"/><span style="display:none" class="float-emoji petal-anim p4">🌼</span>
+        <img class="float-emoji petal-anim p5"  src="pink_rose_pedal-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌸"/><span style="display:none" class="float-emoji petal-anim p5">🌸</span>
+        <img class="float-emoji petal-anim p6"  src="red_rose_pedal-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌺"/><span style="display:none" class="float-emoji petal-anim p6">🌺</span>
+        <img class="float-emoji petal-anim p7"  src="pink_rose_pedal-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌸"/><span style="display:none" class="float-emoji petal-anim p7">🌸</span>
+        <img class="float-emoji petal-anim p8"  src="red_rose_pedal-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌼"/><span style="display:none" class="float-emoji petal-anim p8">🌼</span>
+        <img class="float-emoji petal-anim p9"  src="pink_rose_pedal-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌸"/><span style="display:none" class="float-emoji petal-anim p9">🌸</span>
+        <img class="float-emoji petal-anim p10" src="red_rose_pedal-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌺"/><span style="display:none" class="float-emoji petal-anim p10">🌺</span>
+
+        <!-- Marigolds — replace src with marigold1.png, marigold2.png etc. -->
+        <img class="float-emoji marigold-anim mg1" src="marie_gold-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌻"/><span style="display:none" class="float-emoji marigold-anim mg1">🌻</span>
+        <img class="float-emoji marigold-anim mg2" src="marie_gold-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌻"/><span style="display:none" class="float-emoji marigold-anim mg2">🌻</span>
+        <img class="float-emoji marigold-anim mg3" src="marie_gold-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌻"/><span style="display:none" class="float-emoji marigold-anim mg3">🌻</span>
+        <img class="float-emoji marigold-anim mg4" src="marie_gold-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌻"/><span style="display:none" class="float-emoji marigold-anim mg4">🌻</span>
+        <img class="float-emoji marigold-anim mg5" src="marie_gold-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌻"/><span style="display:none" class="float-emoji marigold-anim mg5">🌻</span>
+        <img class="float-emoji marigold-anim mg6" src="marie_gold-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🌻"/><span style="display:none" class="float-emoji marigold-anim mg6">🌻</span>
+
+        <!-- Lotus — replace src with lotus1.png, lotus2.png etc. -->
+        <img class="float-emoji lotus-anim lp1" src="lotus-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🪷"/><span style="display:none" class="float-emoji lotus-anim lp1">🪷</span>
+        <img class="float-emoji lotus-anim lp2" src="lotus-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🪷"/><span style="display:none" class="float-emoji lotus-anim lp2">🪷</span>
+        <img class="float-emoji lotus-anim lp3" src="lotus-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🪷"/><span style="display:none" class="float-emoji lotus-anim lp3">🪷</span>
+        <img class="float-emoji lotus-anim lp4" src="lotus-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🪷"/><span style="display:none" class="float-emoji lotus-anim lp4">🪷</span>
+        <img class="float-emoji lotus-anim lp5" src="lotus-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🪷"/><span style="display:none" class="float-emoji lotus-anim lp5">🪷</span>
+
+        <!-- Leaves — replace src with leaf1.png etc. -->
+        <img class="float-emoji leaf-anim gl1" src="leaf-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🍃"/><span style="display:none" class="float-emoji leaf-anim gl1">🍃</span>
+        <img class="float-emoji leaf-anim gl2" src="leaf-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🍃"/><span style="display:none" class="float-emoji leaf-anim gl2">🍃</span>
+        <img class="float-emoji leaf-anim gl3" src="leaf-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🍂"/><span style="display:none" class="float-emoji leaf-anim gl3">🍂</span>
+        <img class="float-emoji leaf-anim gl4" src="leaf-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🍃"/><span style="display:none" class="float-emoji leaf-anim gl4">🍃</span>
+        <img class="float-emoji leaf-anim gl5" src="leaf-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🍂"/><span style="display:none" class="float-emoji leaf-anim gl5">🍂</span>
+        <img class="float-emoji leaf-anim gl6" src="leaf-removebg-preview.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🍃"/><span style="display:none" class="float-emoji leaf-anim gl6">🍃</span>
+
+        <!-- Diyas — replace src with diya1.png, diya2.png etc. -->
+        <img class="float-emoji diya-anim dy1" src="lamp.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🪔"/><span style="display:none" class="float-emoji diya-anim dy1">🪔</span>
+        <img class="float-emoji diya-anim dy2" src="lamp.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🪔"/><span style="display:none" class="float-emoji diya-anim dy2">🪔</span>
+        <img class="float-emoji diya-anim dy3" src="lamp.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🪔"/><span style="display:none" class="float-emoji diya-anim dy3">🪔</span>
+        <img class="float-emoji diya-anim dy4" src="lamp.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="🪔"/><span style="display:none" class="float-emoji diya-anim dy4">🪔</span>
+
+        <!-- Sparkles — replace src with sparkle1.png etc. -->
+        <img class="float-emoji sparkle-anim sp1  large"  src="star.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="✨"/><span style="display:none" class="float-emoji sparkle-anim sp1 large">✨</span>
+        <img class="float-emoji sparkle-anim sp2  medium" src="star.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="⭐"/><span style="display:none" class="float-emoji sparkle-anim sp2 medium">⭐</span>
+        <img class="float-emoji sparkle-anim sp3  large"  src="star.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="✨"/><span style="display:none" class="float-emoji sparkle-anim sp3 large">✨</span>
+        <img class="float-emoji sparkle-anim sp4  small"  src="star.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="💫"/><span style="display:none" class="float-emoji sparkle-anim sp4 small">💫</span>
+        <img class="float-emoji sparkle-anim sp5  medium" src="star.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="✨"/><span style="display:none" class="float-emoji sparkle-anim sp5 medium">✨</span>
+        <img class="float-emoji sparkle-anim sp6  large"  src="star.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="⭐"/><span style="display:none" class="float-emoji sparkle-anim sp6 large">⭐</span>
+        <img class="float-emoji sparkle-anim sp7  small"  src="star.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="✨"/><span style="display:none" class="float-emoji sparkle-anim sp7 small">✨</span>
+        <img class="float-emoji sparkle-anim sp8  medium" src="star.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="💫"/><span style="display:none" class="float-emoji sparkle-anim sp8 medium">💫</span>
+        <img class="float-emoji sparkle-anim sp9  large"  src="star.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="✨"/><span style="display:none" class="float-emoji sparkle-anim sp9 large">✨</span>
+        <img class="float-emoji sparkle-anim sp10 small"  src="star.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="⭐"/><span style="display:none" class="float-emoji sparkle-anim sp10 small">⭐</span>
+        <img class="float-emoji sparkle-anim sp11 medium" src="star.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="✨"/><span style="display:none" class="float-emoji sparkle-anim sp11 medium">✨</span>
+        <img class="float-emoji sparkle-anim sp12 large"  src="star.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="💫"/><span style="display:none" class="float-emoji sparkle-anim sp12 large">💫</span>
+
+        <!-- Rings & Hearts — replace src with ring1.png, heart1.png -->
+        <img class="float-emoji paisley-anim ps1" src="heart.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="💍"/><span style="display:none" class="float-emoji paisley-anim ps1">💍</span>
+        <img class="float-emoji paisley-anim ps2" src="ring.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="❤️"/><span style="display:none" class="float-emoji paisley-anim ps2">❤️</span>
+        <img class="float-emoji paisley-anim ps3" src="heart.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="💍"/><span style="display:none" class="float-emoji paisley-anim ps3">💍</span>
+        <img class="float-emoji paisley-anim ps4" src="ring.png" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="❤️"/><span style="display:none" class="float-emoji paisley-anim ps4">❤️</span>
+
+        <!-- Beads — replace src with bead1.png etc. -->
+        <img class="float-emoji bead-anim bd1" src="#" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="📿"/><span style="display:none" class="float-emoji bead-anim bd1">📿</span>
+        <img class="float-emoji bead-anim bd2" src="#" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="📿"/><span style="display:none" class="float-emoji bead-anim bd2">📿</span>
+        <img class="float-emoji bead-anim bd3" src="#" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="📿"/><span style="display:none" class="float-emoji bead-anim bd3">📿</span>
+        <img class="float-emoji bead-anim bd4" src="#" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="📿"/><span style="display:none" class="float-emoji bead-anim bd4">📿</span>
+        <img class="float-emoji bead-anim bd5" src="#" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="📿"/><span style="display:none" class="float-emoji bead-anim bd5">📿</span>
+        <img class="float-emoji bead-anim bd6" src="#" onerror="this.style.display='none';this.nextSibling.style.display='inline'" alt="📿"/><span style="display:none" class="float-emoji bead-anim bd6">📿</span>
     </div>
 
- <!-- Animated Lanterns - Highest z-index to float above everything -->
-<div class="lanterns-container" style="z-index: 9999; position: absolute; top: 0; left: 0; width: 100%; height: 100%; ">
-    <div class="lantern lantern-1">
-        <div class="lantern-top"></div>
-        <div class="lantern-body">
-            <div class="lantern-glow"></div>
-        </div>
-        <div class="lantern-bottom"></div>
-        <div class="lantern-tassel"></div>
-    </div>
-    <div class="lantern lantern-2" >
-        <div class="lantern-top"></div>
-        <div class="lantern-body">
-            <div class="lantern-glow"></div>
-        </div>
-        <div class="lantern-bottom"></div>
-        <div class="lantern-tassel"></div>
-    </div>
-    <div class="lantern lantern-3" >
-        <div class="lantern-top"></div>
-        <div class="lantern-body">
-            <div class="lantern-glow"></div>
-        </div>
-        <div class="lantern-bottom"></div>
-        <div class="lantern-tassel"></div>
-    </div>
-    <div class="lantern lantern-4">
-        <div class="lantern-top"></div>
-        <div class="lantern-body">
-            <div class="lantern-glow"></div>
-        </div>
-        <div class="lantern-bottom"></div>
-        <div class="lantern-tassel"></div>
-    </div>
-    <div class="lantern lantern-5">
-        <div class="lantern-top"></div>
-        <div class="lantern-body">
-            <div class="lantern-glow"></div>
-        </div>
-        <div class="lantern-bottom"></div>
-        <div class="lantern-tassel"></div>
-    </div>
-    <div class="lantern lantern-6">
-        <div class="lantern-top"></div>
-        <div class="lantern-body">
-            <div class="lantern-glow"></div>
-        </div>
-        <div class="lantern-bottom"></div>
-        <div class="lantern-tassel"></div>
-    </div>
-</div>
 
-<div class="framer-TCaaR" style="position: relative; z-index: 1;">
     <!-- Main Container -->
     <div class="main-container" style="position: relative; z-index: 2;">
         <!-- Section 1 Background -->
@@ -1827,6 +2222,9 @@
             <div class="floating-orb orb-2"></div>
             <div class="temple-silhouette"></div>
         </div>
+
+        <!-- Names + Lanterns wrapper -->
+        <div class="names-lanterns-wrapper" style="position: relative;">
 
              <!-- Names Section - HIGHEST (above lanterns) -->
         <section class="names-section" style="position: relative; z-index: 120000;">
@@ -1837,12 +2235,64 @@
             </div>
         </section>
 
-    </div>
+        <!-- Animated Lanterns - overlaid on names section, full viewport width -->
+        <div class="lanterns-container" style="z-index: 99; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; overflow: visible;">
+        <div class="lantern lantern-1">
+            <div class="lantern-top"></div>
+            <div class="lantern-body">
+                <div class="lantern-glow"></div>
+            </div>
+            <div class="lantern-bottom"></div>
+            <div class="lantern-tassel"></div>
+        </div>
+        <div class="lantern lantern-2">
+            <div class="lantern-top"></div>
+            <div class="lantern-body">
+                <div class="lantern-glow"></div>
+            </div>
+            <div class="lantern-bottom"></div>
+            <div class="lantern-tassel"></div>
+        </div>
+        <div class="lantern lantern-3">
+            <div class="lantern-top"></div>
+            <div class="lantern-body">
+                <div class="lantern-glow"></div>
+            </div>
+            <div class="lantern-bottom"></div>
+            <div class="lantern-tassel"></div>
+        </div>
+        <div class="lantern lantern-4">
+            <div class="lantern-top"></div>
+            <div class="lantern-body">
+                <div class="lantern-glow"></div>
+            </div>
+            <div class="lantern-bottom"></div>
+            <div class="lantern-tassel"></div>
+        </div>
+        <div class="lantern lantern-5">
+            <div class="lantern-top"></div>
+            <div class="lantern-body">
+                <div class="lantern-glow"></div>
+            </div>
+            <div class="lantern-bottom"></div>
+            <div class="lantern-tassel"></div>
+        </div>
+        <div class="lantern lantern-6">
+            <div class="lantern-top"></div>
+            <div class="lantern-body">
+                <div class="lantern-glow"></div>
+            </div>
+            <div class="lantern-bottom"></div>
+            <div class="lantern-tassel"></div>
+        </div>
+    </div><!-- end lanterns-container -->
+        </div><!-- end names-lanterns-wrapper -->
+    </div><!-- end main-container -->
 
     <!-- FULL WIDTH RESPONSIVE IMAGE SECTION - Below lanterns but above background -->
-    <section class="fullscreen-image-section" style="width: 100vw; height: 100%;  z-index: 3;">
+    <section class="fullscreen-image-section" style="width: 100vw; height: 100%;  z-index: -1;">
         <div class="fullscreen-image-container" style=" width: 100%;  height: 100%;">
-            <img src="marraige.png"
+            <img src="marriage.jpg"
                  alt="Sarath and Nivetha - Wedding Couple"
                  class="fullscreen-hero-image responsive-image"
                  style="width: 100%; height: auto; display: block; position: relative; z-index: 1;"
@@ -1891,131 +2341,43 @@
                 </div>
             </section>
 
-            <!-- Events Section -->
-            <section class="events-section">
-                <!-- Card 1 - Mehendi -->
-                <!-- <div class="event-card card-1">
-                    <div class="card-border">
-                        <div class="card-pattern"></div>
-                        <div class="flower-top"></div>
-                    </div>
-                    <div class="flower-bottom"></div>
-                    <div class="event-details">
-                        <div class="event-name">Mehendi</div>
-                        <div class="event-info">
-                            <div class="event-date">Friday, March 9th 2026</div>
-                            <div class="event-venue">Rambagh, Jaipur</div>
-                            <div class="event-time">6pm Onwards</div>
-                        </div>
-                        <div class="map-link">
-                            <a href="#">See the route</a>
-                        </div>
-                    </div>
-                </div> -->
+            <!-- ================================================
+                 STICKY STACKING EVENTS SECTION
+                 Each card slides up and stacks like the Beach demo
+                 ================================================ -->
+            <section class="events-section" id="events-section">
+                <div class="events-sticky-wrapper" id="eventsStickyWrapper">
 
-                <!-- Card 2 - Haldi -->
-                <!-- <div class="event-card card-2">
-                    <div class="card-border">
-                        <div class="card-pattern"></div>
-                        <div class="flower-top"></div>
-                    </div>
-                    <div class="flower-bottom"></div>
-                    <div class="event-details">
-                        <div class="event-name">Haldi</div>
-                        <div class="event-info">
-                            <div class="event-date">Friday, March 10th 2026</div>
-                            <div class="event-venue">Rambagh, Jaipur</div>
-                            <div class="event-time">6pm Onwards</div>
+                    <!-- Card 1 - Reception (only active event) -->
+                    <div class="event-card card-1" data-card="0">
+                        <div class="card-bg-pattern"></div>
+                        <div class="card-accent"></div>
+                        <div class="card-inner">
+                            <div class="event-number">01 · Our Celebration</div>
+                            <div class="card-divider"></div>
+                            <div class="event-name">Reception</div>
+                            <div class="event-info-block">
+                                <div class="event-date">Sunday, March 8th 2026</div>
+                                <div class="event-venue">Ashoka Park Inn, KK Nagar West</div>
+                                <div class="event-time">6:00 PM Onwards</div>
+                            </div>
+                            <div class="map-link">
+                                <a href="https://maps.app.goo.gl/sZuYUvW5v1fqkPDm7">See the route ↗</a>
+                            </div>
                         </div>
-                        <div class="map-link">
-                            <a href="#">See the route</a>
-                        </div>
                     </div>
-                </div> -->
 
-                <!-- Card 3 - Sangeet -->
-                <!-- <div class="event-card card-3">
-                    <div class="card-border">
-                        <div class="card-pattern"></div>
-                        <div class="flower-top"></div>
-                    </div>
-                    <div class="flower-bottom"></div>
-                    <div class="event-details">
-                        <div class="event-name">Sangeet</div>
-                        <div class="event-info">
-                            <div class="event-date">Friday, March 10th 2026</div>
-                            <div class="event-venue">Rambagh, Jaipur</div>
-                            <div class="event-time">6pm Onwards</div>
-                        </div>
-                        <div class="map-link">
-                            <a href="#">See the route</a>
-                        </div>
-                    </div>
-                </div> -->
+                    <!-- Scroll progress dots -->
+                    <!-- removed -->
 
-                <!-- Card 4 - Engagement -->
-                <!-- <div class="event-card card-4">
-                    <div class="card-border">
-                        <div class="card-pattern"></div>
-                        <div class="flower-top"></div>
-                    </div>
-                    <div class="flower-bottom"></div>
-                    <div class="event-details">
-                        <div class="event-name">Engagement</div>
-                        <div class="event-info">
-                            <div class="event-date">Friday, March 11th 2026</div>
-                            <div class="event-venue">Rambagh, Jaipur</div>
-                            <div class="event-time">6pm Onwards</div>
-                        </div>
-                        <div class="map-link">
-                            <a href="#">See the route</a>
-                        </div>
-                    </div>
-                </div> -->
+                    <!-- Scroll hint -->
+                    <!-- removed -->
 
-                <!-- Card 5 - Muhurtham -->
-                <!-- <div class="event-card card-5">
-                    <div class="card-border">
-                        <div class="card-pattern"></div>
-                        <div class="flower-top"></div>
-                    </div>
-                    <div class="flower-bottom"></div>
-                    <div class="event-details">
-                        <div class="event-name">Muhurtham</div>
-                        <div class="event-info">
-                            <div class="event-date">Friday, March 12th 2026</div>
-                            <div class="event-venue">Rambagh, Jaipur</div>
-                            <div class="event-time">6pm Onwards</div>
-                        </div>
-                        <div class="map-link">
-                            <a href="#">See the route</a>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- Card 6 - Reception -->
-                <div class="event-card card-6">
-                    <div class="card-border">
-                        <div class="card-pattern"></div>
-                        <div class="flower-top"></div>
-                    </div>
-                    <div class="flower-bottom"></div>
-                    <div class="event-details">
-                        <div class="event-name">Reception</div>
-                        <div class="event-info">
-                            <div class="event-date">Friday, March 17th 2026</div>
-                            <div class="event-venue">Rambagh, Jaipur</div>
-                            <div class="event-time">6pm Onwards</div>
-                        </div>
-                        <div class="map-link">
-                            <a href="#">See the route</a>
-                        </div>
-                    </div>
                 </div>
             </section>
 
             <!-- CTA - Location -->
-            <section class="cta-location" style="padding: 10px;" id="location">
+            <section class="cta-location" style="padding: 10px; z-index: 999999;" id="location">
                 <div class="cta-content">
                     <div>
                         <div class="cta-title">See the route</div>
@@ -2028,7 +2390,7 @@
             </section>
 
             <!-- Bride and Groom Section -->
-            <section class="section-2" id="bride-and-groom">
+            <section class="section-2" id="bride-and-groom" style="padding-inline: 10px;">
                 <div class="section-2-bg"></div>
 
                 <div class="bride-groom-content">
@@ -2044,7 +2406,7 @@
                     <div class="photo-carousel">
                         <div class="carousel-frame"></div>
                         <div class="carousel-images">
-                            <span>Couple Photo</span>
+                            ,<img src="couple_image.jpeg" style="width: 100%; margin-left: -1vh; height: 100%;" alt="">
                         </div>
                     </div>
                 </div>
@@ -2065,7 +2427,7 @@
             </section> -->
 
             <!-- Things to Know Section -->
-            <section class="things-section" id="things-to-know">
+            <!-- <section class="things-section" id="things-to-know">
                 <div class="section-3-bg"></div>
 
                 <div class="things-content">
@@ -2077,7 +2439,7 @@
                     </div>
                     
                     <div class="info-cards">
-                        <!-- Hashtag Card -->
+                     
                         <div class="info-card">
                             <div class="info-icon">#</div>
                             <div class="info-card-title">Hashtag</div>
@@ -2086,7 +2448,7 @@
                             </div>
                         </div>
                         
-                        <!-- Weather Card -->
+                       
                         <div class="info-card">
                             <div class="info-icon">☀️</div>
                             <div class="info-card-title">Weather</div>
@@ -2095,7 +2457,7 @@
                             </div>
                         </div>
                         
-                        <!-- Staff Card -->
+                     
                         <div class="info-card">
                             <div class="info-icon">👥</div>
                             <div class="info-card-title">Staff</div>
@@ -2104,7 +2466,7 @@
                             </div>
                         </div>
                         
-                        <!-- Parking Card -->
+                       
                         <div class="info-card">
                             <div class="info-icon">🅿️</div>
                             <div class="info-card-title">Parking</div>
@@ -2114,10 +2476,10 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
             <!-- CTA - Instagram -->
-            <section class="cta-instagram" id="instagram">
+            <!-- <section class="cta-instagram" id="instagram">
                 <div class="instagram-content">
                     <div>
                         <div class="instagram-title">Follow the action</div>
@@ -2128,7 +2490,7 @@
                         <div class="circle-inner"></div>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
             
                         <!-- Footer -->
@@ -2268,6 +2630,56 @@ updateWeddingCountdown(); // Initial call
                 }
             };
         }
+    </script>
+
+    <script>
+        // ============================================================
+        //  BACKGROUND ANIMATION FREEZE (preserved from original)
+        //  Freeze floating elements once user scrolls past events
+        // ============================================================
+        const floatingElements = document.querySelector('.floating-elements');
+        const animatedBg = document.querySelector('.animated-bg');
+        const lanternsContainer = document.querySelector('.lanterns-container');
+
+        let frozen = false;
+
+        function freezeAnimations() {
+            if (frozen) return;
+            frozen = true;
+            [floatingElements, animatedBg, lanternsContainer].forEach(el => {
+                if (!el) return;
+                el.style.animationPlayState = 'paused';
+                el.querySelectorAll('*').forEach(child => {
+                    child.style.animationPlayState = 'paused';
+                });
+            });
+        }
+
+        function unfreezeAnimations() {
+            if (!frozen) return;
+            frozen = false;
+            [floatingElements, animatedBg, lanternsContainer].forEach(el => {
+                if (!el) return;
+                el.style.animationPlayState = 'running';
+                el.querySelectorAll('*').forEach(child => {
+                    child.style.animationPlayState = 'running';
+                });
+            });
+        }
+
+        function checkScroll() {
+            const eventsSection = document.getElementById('events-section');
+            if (!eventsSection) return;
+            const bottom = eventsSection.getBoundingClientRect().bottom;
+            if (bottom <= 0) {
+                freezeAnimations();
+            } else {
+                unfreezeAnimations();
+            }
+        }
+
+        window.addEventListener('scroll', checkScroll, { passive: true });
+        window.addEventListener('load', checkScroll);
     </script>
 </body>
 </html>
